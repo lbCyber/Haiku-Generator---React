@@ -1,0 +1,279 @@
+@import "partials/colorcodes";
+
+header {
+  background-color: rgba(72, 74, 95, 0.8);
+  position: absolute;
+  height: 120px;
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  overflow: hidden;
+  padding: 0 100px;
+  z-index: 999;
+  transition: background-color 0.3s;
+  h4 {
+    font: 3rem Special Elite, serif;
+    text-shadow: 0 0 15px #000;
+    position: absolute;
+    left: 235px;
+    top: 60px;
+    letter-spacing: 0.3rem;
+    opacity: 0;
+    transition: opacity 0.5s 0.5s;
+  }
+}
+
+.topNav {
+  width: 40%;
+  background-image: url("../assets/axologosmile.svg");
+  background-size: 0%;
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding-bottom: 25px;
+  }
+}
+
+.navDescription {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 100%;
+  text-align: right;
+  pointer-events: none;
+  font: 1.4rem Special Elite, serif;
+}
+
+.topNavItem,
+.currentNavItem {
+  padding: 5px 15px;
+  border-radius: 25px;
+  transition: color 0.3s;
+}
+
+.topNavItem:hover,
+.currentNavItem {
+  color: $lightBlue;
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.topNavItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.topNavItem:hover ~ .navDescription {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 10px auto 0;
+  padding-right: 1rem;
+  letter-spacing: 0.15em;
+  &::after {
+    content: "_";
+    position: absolute;
+    right: 0;
+    animation: blinkCaret 0.6s step-end infinite;
+  }
+}
+
+.topNavItem:hover ~ .navItem1 {
+  width: 26rem;
+  animation: type 2.6s steps(26, end);
+}
+
+.topNavItem:hover ~ .navItem2 {
+  width: 12rem;
+  animation: type 1.3s steps(13, end);
+}
+
+.topNavItem:hover ~ .navItem3 {
+  width: 11rem;
+  animation: type 1.2s steps(12, end);
+}
+
+.headerExpand {
+  background-color: rgba(72, 74, 95, 1);
+}
+
+/*  AXOLOTL LOGO  */
+
+.axoLogo {
+  height: 100%;
+  width: 100px;
+}
+
+.axolotl {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/axologo.svg");
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-size 0.4s, transform 0.4s;
+  position: relative;
+  z-index: 100;
+}
+
+.axoLogo:hover .axolotl {
+  background-image: url("../assets/axologosmile.svg");
+  transform: rotate(1deg);
+  background-size: 101px;
+  transition: background-size 0.6s cubic-bezier(0.5, 10, 0.5, 10), transform 0.6s cubic-bezier(0.5, -5, 0.5, 5);
+}
+
+.axoLogo:hover + h4 {
+  opacity: 1;
+}
+
+.axoLogo:hover .bubbles {
+  animation-name: bubble;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+/*  BUBBLES */
+
+.bubbles {
+  opacity: 0;
+  position: absolute;
+  bottom: 0px;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.bub1 {
+  transform: translate(25px, -10px);
+  width: 5px;
+  height: 5px;
+  animation-delay: 0.3s;
+  animation-duration: 0.4s;
+  z-index: 200;
+}
+
+.bub2 {
+  transform: translate(-18px, -5px);
+  width: 8px;
+  height: 8px;
+  animation-delay: 0.2s;
+  animation-duration: 0.5s;
+}
+
+.bub3 {
+  transform: translate(-5px, 6px);
+  width: 15px;
+  height: 15px;
+  animation-delay: 0s;
+  animation-duration: 0.7s;
+  z-index: 200;
+}
+
+.bub4 {
+  transform: translate(11px, 2px);
+  width: 8px;
+  height: 8px;
+  animation-delay: 0.4s;
+  animation-duration: 0.6s;
+}
+
+.bub5 {
+  transform: translate(-12px, -16px);
+  width: 12px;
+  height: 12px;
+  animation-delay: 0.4s;
+  animation-duration: 0.8s;
+}
+
+.bub6 {
+  transform: translate(-22px, 10px);
+  width: 6px;
+  height: 6px;
+  animation-delay: 0.2s;
+  animation-duration: 0.4s;
+  z-index: 200;
+}
+
+.bub7 {
+  transform: translate(15px, 2px);
+  width: 22px;
+  height: 22px;
+  animation-delay: 0.2s;
+  animation-duration: 0.8s;
+}
+
+.bub8 {
+  transform: translate(-2px, -6px);
+  width: 7px;
+  height: 7px;
+  animation-delay: 0s;
+  animation-duration: 0.6s;
+}
+
+/*  ANIMATION KEYFRAMES  */
+
+@keyframes bubble {
+  0% {
+    left: 140px;
+    bottom: 0px;
+    opacity: 1;
+    background-image: radial-gradient(ellipse at 100% 0%, transparent, rgba(255, 255, 255, 1));
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  16% {
+    left: 155px;
+    bottom: 20px;
+  }
+  33% {
+    left: 140px;
+    bottom: 40px;
+  }
+  50% {
+    left: 150px;
+    bottom: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  66% {
+    left: 140px;
+    bottom: 80px;
+  }
+  83% {
+    left: 150px;
+    bottom: 100px;
+    background-image: radial-gradient(ellipse at 20% 80%, transparent, rgba(255, 255, 255, 0.3));
+    opacity: 1;
+  }
+  100% {
+    left: 155px;
+    bottom: 120px;
+    opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(initial);
+  }
+}
+
+@keyframes blinkCaret {
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
