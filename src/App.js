@@ -4,18 +4,22 @@ import Header from './common/header.js'
 import Intro from './common/intro.js'
 import Footer from './common/footer.js'
 import LoadingModal from './common/loadingModal.js'
+import PoemGenerator from './common/poemGenerator.js'
 // import './css/page.min.css'
 import './css/style.css'
 
 class App extends Component {
   constructor() {
     super();
-    // Create an empty initial state;
     this.state = {
-      loading: true,
+      loading: false,
+      generateGo: false
     }
   }
 
+  makeGenerate = (s) => {
+    this.setState({ generateGo: s })
+  }
 
   // componentDidMount() {
   //   this.setState({
@@ -37,15 +41,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.state.loading === true ?
+      <React.Fragment>
+        {this.state.loading ?
           <LoadingModal />
           : null}
         <FrogBackground />
         <Header />
-        <Intro />
+        {this.state.generateGo ? <PoemGenerator loader={this.loadHandler} />
+          : <Intro makeGenerate={this.makeGenerate} />
+        }
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

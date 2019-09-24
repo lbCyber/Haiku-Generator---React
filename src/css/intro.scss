@@ -6,7 +6,13 @@
   position: relative;
   top: 120px;
   width: 50%;
+  transition: left 3s;
 }
+
+.hideContent {
+  left: -60%;
+}
+
 .topContent {
   text-shadow: 0 0 2px #000;
   background-color: rgba(0, 0, 0, 0.5);
